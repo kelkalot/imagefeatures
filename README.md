@@ -4,7 +4,10 @@ A minimal Python package for extracting **classic image features** with only Num
 
 Perfect for image retrieval, classification, and similarity search.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kelkalot/imagefeatures/blob/main/examples/demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kelkalot/imagefeatures/blob/main/examples/demo.ipynb) **Basic Demo** |
+[![Similarity](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kelkalot/imagefeatures/blob/main/examples/demo_similarity.ipynb) **Similarity Search** |
+[![Classification](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kelkalot/imagefeatures/blob/main/examples/demo_classification.ipynb) **Classification**
+
 
 ## ✨ Features
 

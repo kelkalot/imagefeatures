@@ -256,5 +256,5 @@ This package is inspired by the [LIRE](https://github.com/dermotte/lire) Java li
 
 MIT
 
-Michael A. Riegler 
+Michael A. Riegler  
 Mathias Lux

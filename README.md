@@ -8,7 +8,6 @@ Perfect for image retrieval, classification, and similarity search.
 [![Similarity](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kelkalot/imagefeatures/blob/main/examples/demo_similarity.ipynb) **Similarity Search** |
 [![Classification](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kelkalot/imagefeatures/blob/main/examples/demo_classification.ipynb) **Classification**
 
-
 ## ✨ Features
 
 **22 feature extractors** totaling **3,058 dimensions**:
@@ -253,6 +252,9 @@ This package is inspired by the [LIRE](https://github.com/dermotte/lire) Java li
 - **Color Correlogram**: Huang et al., CVPR 1997
 - **LBP**: Ojala, Pietikäinen & Mäenpää, PAMI 2002
 
-## 📄 License
+## 📄 License & Contributors
 
 MIT
+
+Michael A. Riegler 
+Mathias Lux

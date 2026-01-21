@@ -76,7 +76,10 @@ class ScalableColor(GlobalFeature):
         
         for y in range(h):
             for x in range(w):
-                r, g, b = image[y, x, 0], image[y, x, 1], image[y, x, 2]
+                # Convert to float to avoid overflow
+                r = float(image[y, x, 0])
+                g = float(image[y, x, 1])
+                b = float(image[y, x, 2])
                 
                 max_c = max(r, g, b)
                 min_c = min(r, g, b)
@@ -92,7 +95,7 @@ class ScalableColor(GlobalFeature):
                 if diff == 0:
                     hsv[y, x, 0] = 0
                 elif max_c == r:
-                    hsv[y, x, 0] = 60 * ((g - b) / diff % 6)
+                    hsv[y, x, 0] = 60 * (((g - b) / diff) % 6)
                 elif max_c == g:
                     hsv[y, x, 0] = 60 * ((b - r) / diff + 2)
                 else:

@@ -61,10 +61,10 @@ class ColorHistogram(GlobalFeature):
         bins_per_ch = self._bins_per_channel
         self._histogram = np.zeros(bins_per_ch ** 3, dtype=np.float64)
         
-        # Quantize each channel
-        r_q = (image[:, :, 0] * bins_per_ch / 256).astype(np.int32)
-        g_q = (image[:, :, 1] * bins_per_ch / 256).astype(np.int32)
-        b_q = (image[:, :, 2] * bins_per_ch / 256).astype(np.int32)
+        # Quantize each channel (cast to int32 first to avoid uint8 overflow)
+        r_q = (image[:, :, 0].astype(np.int32) * bins_per_ch // 256)
+        g_q = (image[:, :, 1].astype(np.int32) * bins_per_ch // 256)
+        b_q = (image[:, :, 2].astype(np.int32) * bins_per_ch // 256)
         
         # Clip to valid range
         r_q = np.clip(r_q, 0, bins_per_ch - 1)

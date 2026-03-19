@@ -234,6 +234,45 @@ The `imagefeatures.utils.metrics` module provides:
 | CSV | `.csv` | One row per image, columns are feature values |
 | Pickle | `.pkl` | Tuple of `(X, filenames)` for sklearn |
 
+## 🤖 Claude Code Skill
+
+This package includes a Claude Code skill (`/imagefeatures`) that lets an agent compare, describe, and group images using plain-language answers instead of raw feature vectors.
+
+### What it does
+
+The skill translates low-level feature distances into actionable verdicts. Instead of dumping 22 distance values, it tells you what's similar and what's different.
+
+### Example: Comparing two images
+
+```
+/imagefeatures tests/images/solid_red.png tests/images/solid_blue.png
+```
+
+The skill runs 6 curated features (CEDD, ColorLayout, ColorHistogram, EdgeHistogram, Tamura, AutoColorCorrelogram), interprets the distances using calibrated thresholds, and produces:
+
+> **These images are visually different.** They're both solid, flat images with identical texture and structure — but completely different colors (pure red vs. pure blue).
+>
+> | Aspect | Verdict | Why |
+> |---|---|---|
+> | **Color** | Completely different | Color histogram shows maximum divergence; CEDD distance is maxed out |
+> | **Layout** | Completely different | ColorLayout distance is very high — the overall color arrangement has nothing in common |
+> | **Texture** | Identical | Both are perfectly smooth solids — Tamura distance is 0 |
+> | **Edges** | Identical | Neither image has any edges — EdgeHistogram distance is 0 |
+> | **Spatial color** | Very similar | Both have uniform spatial color distribution |
+
+### Supported tasks
+
+| Command | What it does |
+|---|---|
+| `/imagefeatures img1.png img2.png` | Compare two images and give a similarity verdict |
+| `/imagefeatures ./folder/` | Find near-duplicate image pairs in a folder |
+| `/imagefeatures ./folder/ group` | Cluster images by visual similarity |
+| `/imagefeatures img.png` | Describe an image's visual properties in plain language |
+
+### Design
+
+The skill uses interpretation thresholds for each feature's native distance metric to classify similarity as "very similar", "somewhat similar", or "different" — then produces a majority verdict. Mixed signals are explained (e.g., "similar colors but different structure"). See `.claude/commands/imagefeatures.md` for the full skill definition.
+
 ## 🧪 Testing
 
 ```bash
